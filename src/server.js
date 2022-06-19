@@ -12,8 +12,6 @@ const logger = require('./ middleware/logger');
 const routesV1 = require('./auth/routes/v1');
 const routesV2 = require('./auth/routes/v2');
 
-
-
 const app = express();
 
 app.use(cors());
