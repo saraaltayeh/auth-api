@@ -19,7 +19,7 @@ app.use(morgan('dev'));
 app.use(logger);
 
 app.get("/", (req, res) => {
-    res.send("This is the home page");
+    res.send("welcome to our store page");
 })
 
 app.use(express.json());

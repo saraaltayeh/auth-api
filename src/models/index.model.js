@@ -2,8 +2,8 @@
 require('dotenv').config();
 
 const {Sequelize,DataTypes} = require('sequelize');
-const clothesModel = require('./clothes.model');
-const foodModel = require('./food.model');
+const techstoreModel = require('./techstore.model');
+const customersModel = require('./customers.model');
 const Collection = require('./data-collection.js');
 const userModel = require('../auth/models/users-model');
 
@@ -20,12 +20,12 @@ const DATABASE_CONFIG = process.env.NODE_ENV === 'production' ? {
 
 const sequelize = new Sequelize(DATABASE_URL, DATABASE_CONFIG);
 
-const food = foodModel(sequelize, DataTypes);
-const clothes = clothesModel(sequelize, DataTypes);
+const customers = customersModel(sequelize, DataTypes);
+const techstore = techstoreModel(sequelize, DataTypes);
 
 module.exports = {
     db: sequelize,
-    food: new Collection(food),
-    clothes: new Collection(clothes),
+    customers: new Collection(customers),
+    techstore: new Collection(techstore),
     users: userModel(sequelize, DataTypes),
 };

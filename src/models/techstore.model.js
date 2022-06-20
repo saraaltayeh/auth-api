@@ -1,19 +1,19 @@
 'use strict';
 
-const clothesModel = (sequelize, DataTypes) =>
-    sequelize.define('clothes_table', {
+const techStoreModel = (sequelize, DataTypes) =>
+    sequelize.define('techStore_table', {
         name: {
             type: DataTypes.STRING,
             required: true
         },
-        color: {
+        version: {
             type: DataTypes.STRING,
             required: true
         },
-        size: {
+        type: {
             type: DataTypes.STRING,
             required: true
         }
     });
 
-module.exports = clothesModel;
+module.exports = techStoreModel;

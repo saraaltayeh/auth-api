@@ -3,7 +3,7 @@
 const express = require('express');
 const dataModules = require('../models/users-model');
 const bearerAuth = require('../middleware/bearer');
-const permissions = require('../middleware/oauth');
+const permissions = require('../middleware/acl');
 const routerv2 = express.Router();
 
 routerv2.param('model', (req, res, next) => {
