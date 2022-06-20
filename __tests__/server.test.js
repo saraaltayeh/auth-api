@@ -55,7 +55,7 @@ describe('Auth Router', () => {
     it('basic fails with known user and wrong password ', async () => {
 
         const response = await mockRequest.post('/signin')
-            .auth('admin', 'xyz')
+            .auth('admin', 'abc')
         const {
             user,
             token
@@ -69,7 +69,7 @@ describe('Auth Router', () => {
     it('basic fails with unknown user', async () => {
 
         const response = await mockRequest.post('/signin')
-            .auth('nobody', 'xyz')
+            .auth('nothing', 'abc')
         const {
             user,
             token
@@ -90,75 +90,75 @@ describe('Auth Router', () => {
         expect(response.status).toBe(404);
     });
     it('Should respond with 404 status on an invalid method', async () => {
-        const response = await mockRequest.patch('/api/v1/food');
+        const response = await mockRequest.patch('/api/v1/techstore');
         expect(response.status).toBe(404);
     });
 
     // test if can create a food item
     it('can add a food item', async () => {
-        const response = await mockRequest.post('/api/v1/food').send({
-            name: 'orange',
-            calories: '80',
-            type: 'fruit'
+        const response = await mockRequest.post('/api/v1/techstore').send({
+            name: 'iphone',
+            version: '12',
+            type: 'pro max'
         });
         expect(response.status).toBe(500);
     });
 
-    // test if can read a food item
-    it('can get all food items', async () => {
-        const response = await mockRequest.get('/api/v1/food');
+    // test if can read a techstore item
+    it('can get all techstore items', async () => {
+        const response = await mockRequest.get('/api/v1/techstore');
         expect(response.status).toBe(500);
 
     });
 
-    // test if can read one food item
+    // test if can read one techstore item
     it('can get one record', async () => {
-        const response = await mockRequest.get('/api/v1/food/1');
+        const response = await mockRequest.get('/api/v1/techstore/1');
         expect(response.status).toBe(500);
     });
 
-    // test if can update a food item
+    // test if can update a techstore item
     it('can update a record', async () => {
-        const response = await mockRequest.put('/api/v1/food/1');
+        const response = await mockRequest.put('/api/v1/techstore/1');
         expect(response.status).toBe(500);
     });
-    // test if can delete a food item
+    // test if can delete a techstore item
     it('can delete a record', async () => {
-        const response = await mockRequest.delete('/api/v1/food/1');
+        const response = await mockRequest.delete('/api/v1/techstore/1');
         expect(response.status).toBe(500);
     });
 
     //POST /api/v2/:model with a bearer token that has create permissions adds an item to the DB and returns an object with the added item
-    it('can add a food item', async () => {
-        const response = await mockRequest.post('/api/v2/food').set('Authorization', `Bearer ${accessToken}`).send({
-            name: 'apple',
-            calories: '150',
-            type: 'fruit'
+    it('can add a techstore item', async () => {
+        const response = await mockRequest.post('/api/v2/techstore').set('Authorization', `Bearer ${accessToken}`).send({
+            name: 'macbook',
+            version: 'm1',
+            type: 'air'
         });
         expect(response.status).toBe(500);
     });
     //GET /api/v2/:model with a bearer token that has read permissions returns an array of all items in the DB
-    it('can get all food items', async () => {
-        const response = await mockRequest.get('/api/v2/food').set('Authorization', `Bearer ${accessToken}`);
+    it('can get all techstore items', async () => {
+        const response = await mockRequest.get('/api/v2/techstore').set('Authorization', `Bearer ${accessToken}`);
         expect(response.status).toBe(500);
     });
 
     it('can get one record', async () => {
-        const response = await mockRequest.get('/api/v2/food/1').set('Authorization', `Bearer ${accessToken}`);
+        const response = await mockRequest.get('/api/v2/techstore/1').set('Authorization', `Bearer ${accessToken}`);
         expect(response.status).toBe(500);
     });
 
     it('can update a record', async () => {
-        const response = await mockRequest.put('/api/v2/food/1').set('Authorization', `Bearer ${accessToken}`).send({
-            name: 'banana',
-            calories: '110',
-            type: 'fruit'
+        const response = await mockRequest.put('/api/v2/techstore/1').set('Authorization', `Bearer ${accessToken}`).send({
+            name: 'airpods',
+            version: '4',
+            type: 'apple'
         });
         expect(response.status).toBe(500);
     });
 
     it('can delete a record', async () => {
-        const response = await mockRequest.delete('/api/v2/food/1').set('Authorization', `Bearer ${accessToken}`);
+        const response = await mockRequest.delete('/api/v2/techstore/1').set('Authorization', `Bearer ${accessToken}`);
         expect(response.status).toBe(500);
     });
 });
