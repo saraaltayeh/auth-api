@@ -2,7 +2,7 @@
 
 const {
     users
-} = require('../models/users-model');
+} = require('../../models/index.model');
 
 
 module.exports = async (req, res, next) => {

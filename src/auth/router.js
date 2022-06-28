@@ -3,7 +3,7 @@
 const express = require('express');
 const authRouter = express.Router();
 
-const {users} = require('./models/users-model');
+const {users} = require('../models/index.model');
 
 const basicAuth = require('./middleware/basic')
 const bearerAuth = require('./middleware/bearer')
@@ -13,7 +13,8 @@ authRouter.post('/signup', async (req, res, next) => {
     try {
         let userRecord = await users.create(req.body);
         const output = {
-            user: userRecord,
+            username: userRecord.username,
+            password: userRecord.password,
             token: userRecord.token
         };
         res.status(201).json(output);

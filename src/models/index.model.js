@@ -1,13 +1,16 @@
 'use strict';
 require('dotenv').config();
 
-const {Sequelize,DataTypes} = require('sequelize');
+const {
+    Sequelize,
+    DataTypes
+} = require('sequelize');
 const clothesModel = require('./clothes.model');
 const foodModel = require('./food.model');
 const Collection = require('./data-collection.js');
 const userModel = require('../auth/models/users-model');
 
-const DATABASE_URL = process.env.NODE_ENV === 'test' ? 'sqlite::memory' : process.env.DATABASE_URL;
+const DATABASE_URL = process.env.NODE_ENV === 'test' ? 'sqlite::memory' : 'sqlite::memory' //  process.env.DATABASE_URL;
 const DATABASE_CONFIG = process.env.NODE_ENV === 'production' ? {
     dialectOptions: {
         ssl: {
